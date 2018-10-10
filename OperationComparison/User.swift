@@ -6,8 +6,6 @@
 //  Copyright © 2018 Bakken & Baeck. All rights reserved.
 //
 
-import Foundation
-
 struct User {
     let name: String
     let imageURL: String

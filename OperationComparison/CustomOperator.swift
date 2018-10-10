@@ -6,8 +6,6 @@
 //  Copyright © 2018 Bakken & Baeck. All rights reserved.
 //
 
-import Foundation
-
 // This is based on Vincent Pradeilles' NSSpain 2018 lightning talk. Vincent's original approach is outlined here:
 //https://github.com/vincent-pradeilles/slides/blob/master/nsspain-2018-solving-callback-hell-with-good-old-function-composition.pdf
 

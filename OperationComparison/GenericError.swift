@@ -6,8 +6,6 @@
 //  Copyright © 2018 Bakken & Baeck. All rights reserved.
 //
 
-import Foundation
-
 enum GenericError: Error {
     case selfWasDeallocated
 }
