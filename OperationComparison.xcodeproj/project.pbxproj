@@ -19,6 +19,7 @@
 		9BEBF172216E339000C95493 /* ImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEBF171216E339000C95493 /* ImageResizer.swift */; };
 		9BEBF174216E352300C95493 /* RealAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEBF173216E352300C95493 /* RealAPI.swift */; };
 		9BEBF176216E379900C95493 /* CustomOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEBF175216E379900C95493 /* CustomOperator.swift */; };
+		9BEBF178216E4F8B00C95493 /* GenericError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEBF177216E4F8B00C95493 /* GenericError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		9BEBF171216E339000C95493 /* ImageResizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResizer.swift; sourceTree = "<group>"; };
 		9BEBF173216E352300C95493 /* RealAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealAPI.swift; sourceTree = "<group>"; };
 		9BEBF175216E379900C95493 /* CustomOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOperator.swift; sourceTree = "<group>"; };
+		9BEBF177216E4F8B00C95493 /* GenericError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericError.swift; sourceTree = "<group>"; };
 		BE06623FB6DE7312694107FE /* Pods-OperationComparison.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OperationComparison.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OperationComparison/Pods-OperationComparison.debug.xcconfig"; sourceTree = "<group>"; };
 		E59A69A59A2119907DA3B194 /* Pods_OperationComparison.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OperationComparison.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -91,19 +93,28 @@
 			isa = PBXGroup;
 			children = (
 				9BEBF159216E2A7800C95493 /* AppDelegate.swift */,
-				9BEBF16B216E2A8E00C95493 /* Result.swift */,
-				9BEBF15B216E2A7800C95493 /* ViewController.swift */,
-				9BEBF15D216E2A7800C95493 /* Main.storyboard */,
-				9BEBF160216E2A7B00C95493 /* Assets.xcassets */,
-				9BEBF162216E2A7B00C95493 /* LaunchScreen.storyboard */,
-				9BEBF165216E2A7B00C95493 /* Info.plist */,
-				9BEBF171216E339000C95493 /* ImageResizer.swift */,
-				9BEBF16D216E2AB300C95493 /* FakeAPI.swift */,
-				9BEBF173216E352300C95493 /* RealAPI.swift */,
-				9BEBF16F216E2AF300C95493 /* User.swift */,
 				9BEBF175216E379900C95493 /* CustomOperator.swift */,
+				9BEBF16D216E2AB300C95493 /* FakeAPI.swift */,
+				9BEBF177216E4F8B00C95493 /* GenericError.swift */,
+				9BEBF171216E339000C95493 /* ImageResizer.swift */,
+				9BEBF173216E352300C95493 /* RealAPI.swift */,
+				9BEBF16B216E2A8E00C95493 /* Result.swift */,
+				9BEBF16F216E2AF300C95493 /* User.swift */,
+				9BEBF15B216E2A7800C95493 /* ViewController.swift */,
+				9BEBF179216E4FB300C95493 /* Resources */,
 			);
 			path = OperationComparison;
+			sourceTree = "<group>";
+		};
+		9BEBF179216E4FB300C95493 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9BEBF160216E2A7B00C95493 /* Assets.xcassets */,
+				9BEBF165216E2A7B00C95493 /* Info.plist */,
+				9BEBF162216E2A7B00C95493 /* LaunchScreen.storyboard */,
+				9BEBF15D216E2A7800C95493 /* Main.storyboard */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,6 +247,7 @@
 				9BEBF170216E2AF300C95493 /* User.swift in Sources */,
 				9BEBF172216E339000C95493 /* ImageResizer.swift in Sources */,
 				9BEBF174216E352300C95493 /* RealAPI.swift in Sources */,
+				9BEBF178216E4F8B00C95493 /* GenericError.swift in Sources */,
 				9BEBF176216E379900C95493 /* CustomOperator.swift in Sources */,
 				9BEBF15A216E2A7800C95493 /* AppDelegate.swift in Sources */,
 			);
@@ -385,7 +397,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = OperationComparison/Info.plist;
+				INFOPLIST_FILE = OperationComparison/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -403,7 +415,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = OperationComparison/Info.plist;
+				INFOPLIST_FILE = OperationComparison/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

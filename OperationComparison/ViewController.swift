@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PromiseKit
 
 class ViewController: UIViewController {
     
@@ -60,15 +61,54 @@ class ViewController: UIViewController {
         }
     }
     
+    // MARK: - PromiseKit
+    
+    @IBAction private func loadAndProcessPromiseKit() {
+        activityIndicator.startAnimating()
+        imageView.image = nil
+        operationLabel.text = "Fetching user..."
+
+        /// https://github.com/mxcl/PromiseKit/blob/master/Documentation/FAQ.md#do-i-need-to-worry-about-retain-cycles
+        Result.promiseFromFunction(FakeAPI.fetchUser)
+            .then { [weak self] user -> Promise<UIImage> in
+                guard let self = self else { throw GenericError.selfWasDeallocated }
+                
+                self.operationLabel.text = "Fetching image..."
+                return Result.promiseFromFunction(with: user, RealAPI.fetchImage)
+            }
+            .then { [weak self] image -> Promise<UIImage> in
+                guard let self = self else { throw GenericError.selfWasDeallocated }
+                
+                self.operationLabel.text = "Resizing Image..."
+                return self.resizeImagePromise(with: image)
+            }
+            .ensure { [weak self] in
+                self?.activityIndicator.stopAnimating()
+            }
+            .done { [weak self] resizedImage in
+                self?.imageView.image = resizedImage
+                self?.operationLabel.text = "Done!"
+            }
+            .catch { [weak self] error in
+                self?.operationLabel.text = "Error occurred: \(error)"
+            }
+    }
+    
+    private func resizeImagePromise(with image: UIImage) -> Promise<UIImage> {
+        return Promise { seal in
+            ImageResizer.resizeImage(image, to: self.imageView.frame.size) { result in
+                result.sealPromise(with: seal)
+            }
+        }
+    }
+    
     // MARK: - Custom Operator
     
     @IBAction private func loadAndProcessCustomOperator() {
         activityIndicator.startAnimating()
         imageView.image = nil
-        operationLabel.text = "Fetching user..."
         
-        
-        let chain = fetchUser 
+        let chain = fetchUser
             --> fetchUserImage
             --> resizeImageForImageView
         
