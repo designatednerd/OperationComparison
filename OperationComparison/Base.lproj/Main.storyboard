@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,13 +12,53 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="OperationComparison" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FYl-e5-953">
+                                <rect key="frame" x="117.5" y="100" width="140" height="174.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="174.5" id="Irm-UV-yMc"/>
+                                    <constraint firstAttribute="width" constant="140" id="RlI-7S-6Br"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TVe-Ot-Mqf">
+                                <rect key="frame" x="140.5" y="294.5" width="94" height="30"/>
+                                <state key="normal" title="LOAD DATAS!"/>
+                                <connections>
+                                    <action selector="loadAndProcess" destination="BYZ-38-t0r" eventType="touchUpInside" id="w0Y-Hm-WLM"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RyM-Gs-YsF">
+                                <rect key="frame" x="187.5" y="332.5" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="VaD-fg-fLA">
+                                <rect key="frame" x="177.5" y="177.5" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="VaD-fg-fLA" firstAttribute="centerX" secondItem="FYl-e5-953" secondAttribute="centerX" id="3iz-n5-hQw"/>
+                            <constraint firstItem="TVe-Ot-Mqf" firstAttribute="top" secondItem="FYl-e5-953" secondAttribute="bottom" constant="20" id="5KR-4x-f03"/>
+                            <constraint firstItem="FYl-e5-953" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="BWb-hQ-2m1"/>
+                            <constraint firstItem="RyM-Gs-YsF" firstAttribute="top" secondItem="TVe-Ot-Mqf" secondAttribute="bottom" constant="8" id="JGP-Xt-TlB"/>
+                            <constraint firstItem="TVe-Ot-Mqf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QdJ-KL-6IO"/>
+                            <constraint firstItem="VaD-fg-fLA" firstAttribute="centerY" secondItem="FYl-e5-953" secondAttribute="centerY" id="n3w-Bn-SeX"/>
+                            <constraint firstItem="FYl-e5-953" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oc2-ZW-i5g"/>
+                            <constraint firstItem="RyM-Gs-YsF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sww-Tz-uQf"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="VaD-fg-fLA" id="D8s-Gi-jCE"/>
+                        <outlet property="imageView" destination="FYl-e5-953" id="Hl3-eX-OxP"/>
+                        <outlet property="operationLabel" destination="RyM-Gs-YsF" id="FAA-Zj-ejM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
