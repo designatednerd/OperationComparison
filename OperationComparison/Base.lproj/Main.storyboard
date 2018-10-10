@@ -25,7 +25,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cwu-mu-bkq">
-                                <rect key="frame" x="20" y="294.5" width="335" height="60"/>
+                                <rect key="frame" x="20" y="294.5" width="335" height="120"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TVe-Ot-Mqf">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
@@ -34,11 +34,25 @@
                                             <action selector="loadAndProcess" destination="BYZ-38-t0r" eventType="touchUpInside" id="w0Y-Hm-WLM"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1x-Sn-48i">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvD-2Y-j3c">
                                         <rect key="frame" x="0.0" y="30" width="335" height="30"/>
                                         <state key="normal" title="Load With Custom Operator"/>
                                         <connections>
-                                            <action selector="loadAndProcessCustomOperator" destination="BYZ-38-t0r" eventType="touchUpInside" id="vvT-bD-ZlT"/>
+                                            <action selector="loadAndProcessCustomOperator" destination="BYZ-38-t0r" eventType="touchUpInside" id="naF-NE-GOY"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yN9-Ml-yRM">
+                                        <rect key="frame" x="0.0" y="60" width="335" height="30"/>
+                                        <state key="normal" title="Load With PromiseKit"/>
+                                        <connections>
+                                            <action selector="loadAndProcessPromiseKit" destination="BYZ-38-t0r" eventType="touchUpInside" id="yt8-3d-USP"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1x-Sn-48i">
+                                        <rect key="frame" x="0.0" y="90" width="335" height="30"/>
+                                        <state key="normal" title="Load With RxSwift"/>
+                                        <connections>
+                                            <action selector="loadAndProcessRxSwift" destination="BYZ-38-t0r" eventType="touchUpInside" id="qHO-lb-sTw"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -47,7 +61,7 @@
                                 <rect key="frame" x="177.5" y="177.5" width="20" height="20"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RyM-Gs-YsF">
-                                <rect key="frame" x="187.5" y="374.5" width="0.0" height="0.0"/>
+                                <rect key="frame" x="187.5" y="434.5" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
