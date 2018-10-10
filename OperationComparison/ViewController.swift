@@ -31,7 +31,7 @@ class ViewController: UIViewController {
             switch userResult {
             case .success(let user):
                 self.operationLabel.text = "Fetching image..."
-                RealAPI.fetchImage(from: URL(string: user.imageURL)!) { [weak self] imageResult in
+                RealAPI.fetchImage(for: user) { [weak self] imageResult in
                     guard let self = self else { return }
                     switch imageResult {
                     case .success(let image):
@@ -58,6 +58,48 @@ class ViewController: UIViewController {
                 self.operationLabel.text = "Error fetching user: \(error)"
             }
         }
+    }
+    
+    // MARK: - Custom Operator
+    
+    @IBAction private func loadAndProcessCustomOperator() {
+        activityIndicator.startAnimating()
+        imageView.image = nil
+        operationLabel.text = "Fetching user..."
+        
+        
+        let chain = fetchUser 
+            --> fetchUserImage
+            --> resizeImageForImageView
+        
+        chain { [weak self] result in
+            guard let self = self else { return }
+            
+            self.activityIndicator.stopAnimating()
+            
+            switch result {
+            case .success(let image):
+                self.imageView.image = image
+                self.operationLabel.text = "Complete!"
+            case .error(let error):
+                self.operationLabel.text = "Error occurred: \(error)"
+            }
+        }
+    }
+    
+    private func fetchUser(completion: @escaping (Result<User>) -> Void) {
+        operationLabel.text = "Fetching user..."
+        FakeAPI.fetchUser(completion: completion)
+    }
+    
+    private func resizeImageForImageView(_ image: UIImage, completion: @escaping (Result<UIImage>) -> Void) {
+        operationLabel.text = "Resizing image..."
+        ImageResizer.resizeImage(image, to: self.imageView.frame.size, completion: completion)
+    }
+    
+    private func fetchUserImage(for user: User, completion: @escaping (Result<UIImage>) -> Void) {
+        operationLabel.text = "Fetching image..."
+        RealAPI.fetchImage(for: user, completion: completion)
     }
 }
 

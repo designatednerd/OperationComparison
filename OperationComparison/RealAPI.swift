@@ -15,9 +15,9 @@ struct RealAPI {
         case dataNotImage
     }
     
-    static func fetchImage(from url: URL,
-                           completion: @escaping (Result<UIImage>) -> Void) {
-        getData(from: url) { dataResult in
+    static func fetchImage(for user: User,
+                           completion: @escaping (Result<UIImage>) -> Void) {    
+        getData(from: URL(string: user.imageURL)!) { dataResult in
             switch dataResult {
             case .success(let data):
                 guard let image = UIImage(data: data) else {
