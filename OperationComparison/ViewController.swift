@@ -73,24 +73,22 @@ class ViewController: UIViewController {
         operationLabel.text = "Fetching user (PromiseKit)..."
 
         /// https://github.com/mxcl/PromiseKit/blob/master/Documentation/FAQ.md#do-i-need-to-worry-about-retain-cycles
-        Result.promiseFromFunction(FakeAPI.fetchUser)
-            .map { [weak self] user in
+        FakeAPI.fetchUser()
+            .performSideEffect { [weak self] in
                 guard let self = self else { throw GenericError.selfWasDeallocated }
-                self.operationLabel.text = "Fetching image (PromiseKit)..."
                 
-                return user
+                self.operationLabel.text = "Fetching image (PromiseKit)..."
             }
             .then { user in
-                Result.promiseFromFunction(with: user, RealAPI.fetchImage)
+                RealAPI.fetchImage(for: user)
             }
-            .map { [weak self] image in
+            .performSideEffect { [weak self] in
                 guard let self = self else { throw GenericError.selfWasDeallocated }
                 
                 self.operationLabel.text = "Resizing Image (PromiseKit)..."
-                return image
             }
             .then { image in
-                self.resizeImagePromise(with: image)
+                ImageResizer.resizeImage(image, to: self.imageView.frame.size)
             }
             .ensure { [weak self] in
                 self?.activityIndicator.stopAnimating()
@@ -106,14 +104,6 @@ class ViewController: UIViewController {
             }
     }
     
-    private func resizeImagePromise(with image: UIImage) -> Promise<UIImage> {
-        return Promise { seal in
-            ImageResizer.resizeImage(image, to: self.imageView.frame.size) { result in
-                result.sealPromise(with: seal)
-            }
-        }
-    }
-    
     // MARK: - RxSwift
     
     private let bag = DisposeBag()
@@ -124,18 +114,18 @@ class ViewController: UIViewController {
         imageView.image = nil
         operationLabel.text = "Fetching user (RxSwift)..."
         
-        let image = Result.singleFromFunction(FakeAPI.fetchUser)
-            .map { user in
-                self.updateOperationLabel(with: "Fetching image (RxSwift)...", result: user)
+        let image = FakeAPI.rxFetchUser()
+            .do {
+                self.operationLabel.text = "Fetching image (RxSwift)..."
             }
             .flatMap { user in
-                Result.singleFromFunction(with: user, RealAPI.fetchImage)
+                RealAPI.rxFetchImage(for: user)
             }
-            .map { image in
-                self.updateOperationLabel(with: "Resizing image (RxSwift)...", result: image)
+            .do {
+                self.operationLabel.text = "Resizing image (RxSwift)..."
             }
             .flatMap { image in
-                self.resizeImageSingle(with: image)
+                ImageResizer.rxResizeImage(image, to: self.imageView.frame.size)
             }
         
         let running = Observable
@@ -164,11 +154,6 @@ class ViewController: UIViewController {
         running
             .drive(activityIndicator.rx.isAnimating)
             .disposed(by: bag)
-    }
-    
-    private func updateOperationLabel<T>(with text: String, result: T) -> T {
-        self.operationLabel.text = text
-        return result
     }
     
     private func resizeImageSingle(with image: UIImage) -> Single<UIImage> {

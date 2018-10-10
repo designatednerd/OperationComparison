@@ -20,6 +20,9 @@
 		9BEBF181216E8E7500C95493 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BEBF17B216E8E7400C95493 /* Main.storyboard */; };
 		9BEBF182216E8E7500C95493 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BEBF17D216E8E7400C95493 /* Assets.xcassets */; };
 		9BEBF183216E8E7500C95493 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BEBF17F216E8E7400C95493 /* LaunchScreen.storyboard */; };
+		9BEBF186216E8F8B00C95493 /* Promise+SideEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEBF185216E8F8B00C95493 /* Promise+SideEffect.swift */; };
+		9BEBF188216E918500C95493 /* AsyncAPIs+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEBF187216E918500C95493 /* AsyncAPIs+Promise.swift */; };
+		9BEBF18A216E921200C95493 /* AsyncAPIs+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEBF189216E921200C95493 /* AsyncAPIs+Rx.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		9BEBF17C216E8E7400C95493 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = OperationComparison/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		9BEBF17E216E8E7400C95493 /* Base */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Base; path = OperationComparison/Base.lproj/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		9BEBF180216E8E7400C95493 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = OperationComparison/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
+		9BEBF185216E8F8B00C95493 /* Promise+SideEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Promise+SideEffect.swift"; sourceTree = "<group>"; };
+		9BEBF187216E918500C95493 /* AsyncAPIs+Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AsyncAPIs+Promise.swift"; sourceTree = "<group>"; };
+		9BEBF189216E921200C95493 /* AsyncAPIs+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AsyncAPIs+Rx.swift"; sourceTree = "<group>"; };
 		BE06623FB6DE7312694107FE /* Pods-OperationComparison.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OperationComparison.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OperationComparison/Pods-OperationComparison.debug.xcconfig"; sourceTree = "<group>"; };
 		E59A69A59A2119907DA3B194 /* Pods_OperationComparison.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OperationComparison.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -92,6 +98,7 @@
 		9BEBF158216E2A7800C95493 /* OperationComparison */ = {
 			isa = PBXGroup;
 			children = (
+				9BEBF184216E8F6E00C95493 /* Extensions */,
 				9BEBF159216E2A7800C95493 /* AppDelegate.swift */,
 				9BEBF175216E379900C95493 /* CustomOperator.swift */,
 				9BEBF16D216E2AB300C95493 /* FakeAPI.swift */,
@@ -115,6 +122,16 @@
 				9BEBF165216E2A7B00C95493 /* Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		9BEBF184216E8F6E00C95493 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9BEBF185216E8F8B00C95493 /* Promise+SideEffect.swift */,
+				9BEBF187216E918500C95493 /* AsyncAPIs+Promise.swift */,
+				9BEBF189216E921200C95493 /* AsyncAPIs+Rx.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,11 +262,14 @@
 				9BEBF16E216E2AB300C95493 /* FakeAPI.swift in Sources */,
 				9BEBF15C216E2A7800C95493 /* ViewController.swift in Sources */,
 				9BEBF170216E2AF300C95493 /* User.swift in Sources */,
+				9BEBF188216E918500C95493 /* AsyncAPIs+Promise.swift in Sources */,
 				9BEBF172216E339000C95493 /* ImageResizer.swift in Sources */,
+				9BEBF18A216E921200C95493 /* AsyncAPIs+Rx.swift in Sources */,
 				9BEBF174216E352300C95493 /* RealAPI.swift in Sources */,
 				9BEBF178216E4F8B00C95493 /* GenericError.swift in Sources */,
 				9BEBF176216E379900C95493 /* CustomOperator.swift in Sources */,
 				9BEBF15A216E2A7800C95493 /* AppDelegate.swift in Sources */,
+				9BEBF186216E8F8B00C95493 /* Promise+SideEffect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
