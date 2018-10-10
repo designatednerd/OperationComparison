@@ -1,0 +1,33 @@
+PODS:
+  - PromiseKit (6.5.1):
+    - PromiseKit/CorePromise (= 6.5.1)
+    - PromiseKit/Foundation (= 6.5.1)
+    - PromiseKit/UIKit (= 6.5.1)
+  - PromiseKit/CorePromise (6.5.1)
+  - PromiseKit/Foundation (6.5.1):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.5.1):
+    - PromiseKit/CorePromise
+  - RxCocoa (4.3.1):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.3.1)
+
+DEPENDENCIES:
+  - PromiseKit (~> 6.5.1)
+  - RxCocoa (~> 4.3.1)
+  - RxSwift (~> 4.3.1)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - PromiseKit
+    - RxCocoa
+    - RxSwift
+
+SPEC CHECKSUMS:
+  PromiseKit: 162f56c89aae9989ffc14476a5f821af17c3f4ba
+  RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
+  RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
+
+PODFILE CHECKSUM: 40113e20862ac886d14d2f1a2665a44e6316c1b6
+
+COCOAPODS: 1.5.3
