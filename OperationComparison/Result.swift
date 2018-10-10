@@ -8,6 +8,7 @@
 
 import Foundation
 import PromiseKit
+import RxSwift
 
 enum Result<T> {
     case success(_ item: T)
@@ -45,3 +46,38 @@ extension Result {
     }
 }
 
+
+// MARK: - RxSwift Helpers
+
+extension Result {
+    
+    func finishSingle(_ single: (SingleEvent<T>) -> Void) {
+        switch self {
+        case .success(let item):
+            single(.success(item))
+        case .error(let error):
+            single(.error(error))
+        }
+    }
+    
+    static func singleFromFunction(_ function: @escaping (@escaping ResultCompletion<T>) -> Void) -> Single<T> {
+        return Single.create { observer in
+            function { result in
+                result.finishSingle(observer)
+            }
+            
+            return Disposables.create()
+        }
+    }
+    
+    static func singleFromFunction<U>(with parameter: U,
+                                      _ function: @escaping (U, @escaping ResultCompletion<T>) -> Void) -> Single<T> {
+        return Single.create { observer in
+            function(parameter) { result in
+                result.finishSingle(observer)
+            }
+            
+            return Disposables.create()
+        }
+    }
+}
