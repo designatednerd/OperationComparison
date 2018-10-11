@@ -98,13 +98,11 @@
 		9BEBF158216E2A7800C95493 /* OperationComparison */ = {
 			isa = PBXGroup;
 			children = (
+				9BEBF18D216E9CF300C95493 /* AsyncAPIs */,
 				9BEBF184216E8F6E00C95493 /* Extensions */,
+				9BEBF18E216E9D2300C95493 /* Models */,
 				9BEBF159216E2A7800C95493 /* AppDelegate.swift */,
 				9BEBF175216E379900C95493 /* CustomOperator.swift */,
-				9BEBF18D216E9CF300C95493 /* AsyncAPIs */,
-				9BEBF177216E4F8B00C95493 /* GenericError.swift */,
-				9BEBF16B216E2A8E00C95493 /* Result.swift */,
-				9BEBF16F216E2AF300C95493 /* User.swift */,
 				9BEBF15B216E2A7800C95493 /* ViewController.swift */,
 				9BEBF179216E4FB300C95493 /* Resources */,
 			);
@@ -140,6 +138,16 @@
 				9BEBF173216E352300C95493 /* RealAPI.swift */,
 			);
 			path = AsyncAPIs;
+			sourceTree = "<group>";
+		};
+		9BEBF18E216E9D2300C95493 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9BEBF177216E4F8B00C95493 /* GenericError.swift */,
+				9BEBF16B216E2A8E00C95493 /* Result.swift */,
+				9BEBF16F216E2AF300C95493 /* User.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
