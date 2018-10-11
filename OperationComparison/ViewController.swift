@@ -19,11 +19,16 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         imageView.layer.borderColor = UIColor.black.cgColor
         imageView.layer.borderWidth = 1
     }
+    
+    private func formattedSecondsSince(_ date: Date) -> String {
+        return String(format: "%.3f", Date().timeIntervalSince(date)) + "s"
+    }
+    
+    // MARK: - Callback Hell
     
     @IBAction private func loadAndProcess() {
         let start = Date()
@@ -201,10 +206,6 @@ class ViewController: UIViewController {
     private func fetchUserImage(for user: User, completion: @escaping (Result<UIImage>) -> Void) {
         operationLabel.text = "Fetching image (Custom Operator)..."
         RealAPI.fetchImage(for: user, completion: completion)
-    }
-    
-    private func formattedSecondsSince(_ date: Date) -> String {
-        return String(format: "%.3f", Date().timeIntervalSince(date)) + "s"
     }
 }
 
