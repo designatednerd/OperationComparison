@@ -21,11 +21,11 @@ extension Result {
     }
 }
 
-extension FakeAPI {
+extension Reactive where Base: FakeAPI {
     
-    static func rxFetchUser() -> Single<User> {
+    static func fetchUser() -> Single<User> {
         return Single.create { single in
-            fetchUser { result in
+            FakeAPI.fetchUser { result in
                 result.finishSingle(single)
             }
             
@@ -34,11 +34,11 @@ extension FakeAPI {
     }
 }
 
-extension RealAPI {
+extension Reactive where Base: RealAPI {
     
-    static func rxFetchImage(for user: User) -> Single<UIImage> {
+    static func fetchImage(for user: User) -> Single<UIImage> {
         return Single.create { single in
-            fetchImage(for: user) { result in
+            RealAPI.fetchImage(for: user) { result in
                 result.finishSingle(single)
             }
             
@@ -47,11 +47,11 @@ extension RealAPI {
     }
 }
 
-extension ImageResizer {
+extension Reactive where Base: ImageResizer {
     
-    static func rxResizeImage(_ image: UIImage, to size: CGSize) -> Single<UIImage> {
+    static func resizeImage(_ image: UIImage, to size: CGSize) -> Single<UIImage> {
         return Single.create { single in
-            resizeImage(image, to: size) { result in
+            ImageResizer.resizeImage(image, to: size) { result in
                 result.finishSingle(single)
             }
             

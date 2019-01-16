@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct RealAPI {
+class RealAPI: NSObject {
     
     enum Error: Swift.Error {
         case noDataDownloaded

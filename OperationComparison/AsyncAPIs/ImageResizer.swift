@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct ImageResizer {
+class ImageResizer: NSObject {
     
     enum Error: Swift.Error {
         case imageDidNotResize

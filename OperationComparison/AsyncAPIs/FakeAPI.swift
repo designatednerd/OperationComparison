@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct FakeAPI {
+class FakeAPI: NSObject {
     
     static func fetchUser(completion: @escaping (Result<User>) -> Void) {
         pretendWereGoingToTheInternet(for: 1.5) {

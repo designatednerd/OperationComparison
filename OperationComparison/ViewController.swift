@@ -119,18 +119,18 @@ class ViewController: UIViewController {
         imageView.image = nil
         operationLabel.text = "Fetching user (RxSwift)..."
         
-        let image = FakeAPI.rxFetchUser()
+        let image = FakeAPI.rx.fetchUser()
             .do {
                 self.operationLabel.text = "Fetching image (RxSwift)..."
             }
             .flatMap { user in
-                RealAPI.rxFetchImage(for: user)
+                RealAPI.rx.fetchImage(for: user)
             }
             .do {
                 self.operationLabel.text = "Resizing image (RxSwift)..."
             }
             .flatMap { image in
-                ImageResizer.rxResizeImage(image, to: self.imageView.frame.size)
+                ImageResizer.rx.resizeImage(image, to: self.imageView.frame.size)
             }
         
         let running = Observable
