@@ -53,16 +53,16 @@ class ViewController: UIViewController {
                             case .success(let resizedImage):
                                 self.imageView.image = resizedImage
                             self.operationLabel.text = "Complete in \(self.formattedSecondsSince(start))!"
-                            case .error(let error):
+                            case .failure(let error):
                                 self.operationLabel.text = "Error resizing image: \(error)"
                             }
                         }
-                    case .error(let error):
+                    case .failure(let error):
                         self.activityIndicator.stopAnimating()
                         self.operationLabel.text = "Error fetching image: \(error)"
                     }
                 }
-            case .error(let error):
+            case .failure(let error):
                 self.activityIndicator.stopAnimating()
                 self.operationLabel.text = "Error fetching user: \(error)"
             }
@@ -192,18 +192,18 @@ class ViewController: UIViewController {
             case .success(let image):
                 self.imageView.image = image
                 self.operationLabel.text = "Complete (Custom Operator) in \(self.formattedSecondsSince(start))!"
-            case .error(let error):
+            case .failure(let error):
                 self.operationLabel.text = "Error occurred (Custom Operator): \(error)"
             }
         }
     }
     
-    private func resizeImageForImageView(_ image: UIImage, completion: @escaping (Result<UIImage>) -> Void) {
+    private func resizeImageForImageView(_ image: UIImage, completion: @escaping (Swift.Result<UIImage, Swift.Error>) -> Void) {
         operationLabel.text = "Resizing image (Custom Operator)..."
         ImageResizer.resizeImage(image, to: self.imageView.frame.size, completion: completion)
     }
     
-    private func fetchUserImage(for user: User, completion: @escaping (Result<UIImage>) -> Void) {
+    private func fetchUserImage(for user: User, completion: @escaping (Swift.Result<UIImage, Swift.Error>) -> Void) {
         operationLabel.text = "Fetching image (Custom Operator)..."
         RealAPI.fetchImage(for: user, completion: completion)
     }

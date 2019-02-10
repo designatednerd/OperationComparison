@@ -11,11 +11,11 @@ import RxSwift
 
 extension Result {
     
-    func finishSingle(_ single: (SingleEvent<T>) -> Void) {
+    func finishSingle(_ single: (SingleEvent<Success>) -> Void) {
         switch self {
         case .success(let item):
             single(.success(item))
-        case .error(let error):
+        case .failure(let error):
             single(.error(error))
         }
     }

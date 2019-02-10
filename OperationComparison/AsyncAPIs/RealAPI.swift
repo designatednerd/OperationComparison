@@ -16,26 +16,26 @@ class RealAPI: NSObject {
     }
     
     static func fetchImage(for user: User,
-                           completion: @escaping (Result<UIImage>) -> Void) {    
+                           completion: @escaping (Result<UIImage, Swift.Error>) -> Void) {
         getData(from: URL(string: user.imageURL)!) { dataResult in
             switch dataResult {
             case .success(let data):
                 guard let image = UIImage(data: data) else {
-                    completion(.error(Error.dataNotImage))
+                    completion(.failure(Error.dataNotImage))
                     return
                 }
                 
                 completion(.success(image))
-            case .error(let error):
-                completion(.error(error))
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
     }
     
     
-    private static func getData(from url: URL, fakingDelay delay: TimeInterval = 1, completion: @escaping (Result<Data>) -> Void) {
+    private static func getData(from url: URL, fakingDelay delay: TimeInterval = 1, completion: @escaping (Result<Data, Swift.Error>) -> Void) {
         URLSession.shared.dataTask(with: url) { (data, response, error) in
-            var result: Result<Data>
+            var result: Result<Data, Swift.Error>
             defer {
                 DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                     completion(result)
@@ -43,7 +43,7 @@ class RealAPI: NSObject {
             }
             
             if let error = error {
-                result = .error(error)
+                result = .failure(error)
                 return
             }
             
@@ -52,7 +52,7 @@ class RealAPI: NSObject {
                 return
             }
             
-            result = .error(Error.noDataDownloaded)
-            }.resume()
+            result = .failure(Error.noDataDownloaded)
+        }.resume()
     }
 }

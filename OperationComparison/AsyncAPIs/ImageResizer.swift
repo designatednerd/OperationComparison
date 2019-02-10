@@ -17,12 +17,12 @@ class ImageResizer: NSObject {
     static func resizeImage(_ image: UIImage,
                             to size: CGSize,
                             fakingDelay delay: TimeInterval = 1,
-                            completion: @escaping (Result<UIImage>) -> Void) {
+                            completion: @escaping (Swift.Result<UIImage, Swift.Error>) -> Void) {
         DispatchQueue.global(qos: .userInitiated).async {
             UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
             image.draw(in: CGRect(origin: .zero, size: size))
             
-            var result: Result<UIImage>
+            var result: Result<UIImage, Swift.Error>
             defer {
                 UIGraphicsEndImageContext()
                 DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
@@ -31,7 +31,7 @@ class ImageResizer: NSObject {
             }
             
             guard let resized = UIGraphicsGetImageFromCurrentImageContext() else {
-                result = .error(Error.imageDidNotResize)
+                result = .failure(Error.imageDidNotResize)
                 return
             }
             

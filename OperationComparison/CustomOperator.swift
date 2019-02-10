@@ -11,7 +11,7 @@
 
 infix operator -->: MultiplicationPrecedence
 
-typealias ResultCompletion<T> = (Result<T>) -> Void
+typealias ResultCompletion<T> = (Result<T, Error>) -> Void
 
 func --><T,U>(_ firstFunction: @escaping (@escaping ResultCompletion<T>) -> Void,
               _ secondFunction: @escaping (T, @escaping ResultCompletion<U>) -> Void) -> (@escaping ResultCompletion<U>) -> Void {
@@ -22,8 +22,8 @@ func --><T,U>(_ firstFunction: @escaping (@escaping ResultCompletion<T>) -> Void
                 secondFunction(item) { result2 in
                     completion(result2)
                 }
-            case .error(let error):
-                completion(.error(error))
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
     }

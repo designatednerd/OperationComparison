@@ -9,13 +9,14 @@
 import Foundation
 import PromiseKit
 
-extension Result {
-    
-    func sealPromise(with seal: Resolver<T>) {
+// Have to specify this is Swift's result or it thinks it's PromiseKit's result.
+extension Swift.Result {
+
+    func sealPromise(with seal: Resolver<Success>) {
         switch self {
         case .success(let item):
             seal.fulfill(item)
-        case .error(let error):
+        case .failure(let error):
             seal.reject(error)
         }
     }

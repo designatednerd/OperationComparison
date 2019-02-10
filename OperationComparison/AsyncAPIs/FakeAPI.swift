@@ -10,7 +10,7 @@ import UIKit
 
 class FakeAPI: NSObject {
     
-    static func fetchUser(completion: @escaping (Result<User>) -> Void) {
+    static func fetchUser(completion: @escaping (Swift.Result<User, Swift.Error>) -> Void) {
         pretendWereGoingToTheInternet(for: 1.5) {
             completion(.success(User.fakeUser))
         }
