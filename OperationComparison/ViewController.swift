@@ -115,7 +115,6 @@ class ViewController: UIViewController {
     
     @IBAction private func loadAndProcessRxSwift() {
         let start = Date()
-        activityIndicator.startAnimating()
         imageView.image = nil
         operationLabel.text = "Fetching user (RxSwift)..."
         
