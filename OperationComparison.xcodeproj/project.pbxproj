@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3A9CFCD37225527F76C86BCB /* Pods_OperationComparison.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E59A69A59A2119907DA3B194 /* Pods_OperationComparison.framework */; };
-		9BE1CA9E221056E700F65A35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BC280A221EFD97B0053E8A6 /* Assets.xcassets */; };
-		9BE1CA9F221056E700F65A35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BC280A421EFD97B0053E8A6 /* LaunchScreen.storyboard */; };
-		9BE1CAA0221056E700F65A35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BC280A021EFD97B0053E8A6 /* Main.storyboard */; };
+		9BE04AAD221404BC00ABB893 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BC280A221EFD97B0053E8A6 /* Assets.xcassets */; };
+		9BE04AAE221404BC00ABB893 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BC280A421EFD97B0053E8A6 /* LaunchScreen.storyboard */; };
+		9BE04AAF221404BC00ABB893 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BC280A021EFD97B0053E8A6 /* Main.storyboard */; };
 		9BEBF15A216E2A7800C95493 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEBF159216E2A7800C95493 /* AppDelegate.swift */; };
 		9BEBF15C216E2A7800C95493 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEBF15B216E2A7800C95493 /* ViewController.swift */; };
 		9BEBF16E216E2AB300C95493 /* FakeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEBF16D216E2AB300C95493 /* FakeAPI.swift */; };
@@ -207,9 +207,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BE1CA9E221056E700F65A35 /* Assets.xcassets in Resources */,
-				9BE1CA9F221056E700F65A35 /* LaunchScreen.storyboard in Resources */,
-				9BE1CAA0221056E700F65A35 /* Main.storyboard in Resources */,
+				9BE04AAD221404BC00ABB893 /* Assets.xcassets in Resources */,
+				9BE04AAE221404BC00ABB893 /* LaunchScreen.storyboard in Resources */,
+				9BE04AAF221404BC00ABB893 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
