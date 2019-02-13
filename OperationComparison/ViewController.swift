@@ -92,8 +92,11 @@ class ViewController: UIViewController {
                 
                 self.operationLabel.text = "Resizing Image (PromiseKit)..."
             }
-            .then { image in
-                ImageResizer.resizeImage(image, to: self.imageView.frame.size)
+            .map { image in
+                (image, self.imageView.frame.size)
+            }
+            .then(on: .global(qos: .background)) { tuple in
+                ImageResizer.resizeImage(tuple.0, to: tuple.1)
             }
             .ensure { [weak self] in
                 self?.activityIndicator.stopAnimating()
@@ -142,6 +145,7 @@ class ViewController: UIViewController {
         
         
         image
+            .observeOn(MainScheduler.instance)
             .subscribe(
                 onSuccess: { [weak self] resizedImage in
                     guard let self = self else { return }
@@ -158,16 +162,6 @@ class ViewController: UIViewController {
         running
             .drive(activityIndicator.rx.isAnimating)
             .disposed(by: bag)
-    }
-    
-    private func resizeImageSingle(with image: UIImage) -> Single<UIImage> {
-        return Single.create { observer in
-            
-            ImageResizer.resizeImage(image, to: self.imageView.frame.size) { result in
-                result.finishSingle(observer)
-            }
-            return Disposables.create()
-        }
     }
     
     // MARK: - Custom Operator
